@@ -1,0 +1,27 @@
+<% @books.each do |book| %>
+<table class="table table-hover table-inverse">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Opinion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td>
+          <%= @user.name %>
+          <%= link_to book_path(user.id) do %>
+          <%= attachment_image_tag @user, :profile_image_id, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+        </td>
+        <td><%= @book.title %></td>
+        <td><%= @book.body %></td>
+      </tr>
+      <tr>
+        <td><a href="/users/15792">
+  </tbody>
+</table>
+<% end %>
+<%= paginate books %>
+
