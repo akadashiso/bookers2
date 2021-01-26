@@ -1,23 +1,33 @@
+<% if @book.errors.any? %>
+  <%= @book.errors.count %>件のerrorが発生しました
+  <% @book.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+
 <div class="container">
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
   		<h1>Editing Book</h1>
 
-      <form>
+          <%= form_with model: @book, url:book_path(@book.id), local: true do |f| %>
         <div class="form-group">
-          <%= form_with model: [@user, @book], local: true do |f| %>
-          <%= f.label :title, "Title" %>
+          <%= f.label :title  %>
           <%= f.text_field :title %>
         </div>
         <div class="form-group">
-          <%= f.label :body, "Opinion" %>
+          <%= f.label :body %>
           <%= f.text_field :body %>
         </div>
         <div class="form-group">
-          <%= f.submit "Create Book" %>
-          <% end %>
+          <%= f.submit "Update Book", class: "btn btn-success" %>
         </div>
-      </form>
-    </div>
+          <% end %>
+        <p>
+        <%= link_to "Show", book_path(@book.id)  %>
+        |
+        <%= link_to "Back", books_path %>
+        </p>
+      </div>
   </div>
 </div>
